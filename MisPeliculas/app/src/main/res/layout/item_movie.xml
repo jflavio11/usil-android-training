@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    >
+
+    <TextView
+        android:id="@+id/movieItem_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textColor="@android:color/holo_green_dark"
+        tools:text="Mi pelicula uno" />
+
+    <TextView
+        android:id="@+id/movieItem_tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Esta es la descripción uno." />
+
+</LinearLayout>
