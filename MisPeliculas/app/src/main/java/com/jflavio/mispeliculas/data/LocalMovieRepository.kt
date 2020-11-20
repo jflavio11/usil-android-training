@@ -11,8 +11,8 @@ import com.jflavio.mispeliculas.domain.Movie
  */
 class LocalMovieRepository : IMovieRepository {
 
+    override fun getMovies(  onSuccess : (List<Movie>) -> Unit  ,  onError : (Throwable) -> Unit ) {
 
-    override fun getMovies(): List<Movie> {
         val movie1 = Movie(
             id = 1,
             name = "Toy Story",
@@ -31,7 +31,12 @@ class LocalMovieRepository : IMovieRepository {
             description = "Buzz Yogurt Light busca a Woody el vaquero."
         )
 
-        return listOf(movie1, movie2, movie3)
+        val list = listOf(movie1, movie2, movie3)
+
+
+        onSuccess(list)
+
+
     }
 
 

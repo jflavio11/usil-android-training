@@ -2,9 +2,12 @@ package com.jflavio.mispeliculas.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jflavio.mispeliculas.R
 import com.jflavio.mispeliculas.data.LocalMovieRepository
+import com.jflavio.mispeliculas.data.WebServiceMovieRepository
 import com.jflavio.mispeliculas.domain.Movie
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,7 +22,7 @@ class MainActivity : AppCompatActivity(), MovieView {
         setContentView(R.layout.activity_main)
 
         presenter = MoviePresenterImpl(
-            movieRepo = LocalMovieRepository(),
+            movieRepo = WebServiceMovieRepository(),
             view = this
         )
 
@@ -37,7 +40,8 @@ class MainActivity : AppCompatActivity(), MovieView {
     }
 
     override fun showError(message: String) {
-
+        Log.d("Error", message)
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 }

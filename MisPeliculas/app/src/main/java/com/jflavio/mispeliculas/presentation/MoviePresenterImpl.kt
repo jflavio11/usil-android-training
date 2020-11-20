@@ -1,6 +1,6 @@
 package com.jflavio.mispeliculas.presentation
 
-import com.jflavio.mispeliculas.data.LocalMovieRepository
+import com.jflavio.mispeliculas.data.WebServiceMovieRepository
 import com.jflavio.mispeliculas.domain.IMovieRepository
 
 /**
@@ -10,16 +10,22 @@ import com.jflavio.mispeliculas.domain.IMovieRepository
  * @since  24/10/2020
  */
 class MoviePresenterImpl(
-    private val movieRepo: IMovieRepository = LocalMovieRepository(),
+    private val movieRepo: IMovieRepository = WebServiceMovieRepository(),
     private val view: MovieView
 ) : MoviePresenter {
 
 
     override fun requestMovies() {
 
-        val list = movieRepo.getMovies()
+        movieRepo.getMovies( onError = { error ->
 
-        view.showMovies(list)
+            view.showError(error.message.orEmpty())
+
+        }, onSuccess = { movies ->
+
+            view.showMovies(movies)
+
+        })
 
     }
 

@@ -8,6 +8,6 @@ package com.jflavio.mispeliculas.domain
  */
 interface IMovieRepository {
 
-    fun getMovies(): List<Movie>
+    fun getMovies(  onSuccess : (List<Movie>) -> Unit  ,  onError : (Throwable) -> Unit )
 
 }
